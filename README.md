@@ -8,7 +8,7 @@ Proposal to add the word boundary assertions `\b{w}` to regular expressions in E
 
 ## Motivation
 
-Currently, `/na\b/u.test('naïve')` return `false`, and yet nobody would normally consider that there is two word boundaries in the middle of `fiancée`, and it is not a useful semantics, especially in Unicode-aware contexts (that is, in situations where you should use the u flag).
+Characters that are matched by the short-hand character class `\w` are the characters that are treated as word characters by word boundaries. So `/na\b/u.test('naïve')` return `false`. And yet nobody would normally consider in Unicode-aware contexts that there is two word boundaries in the middle of `naïve` or `fiancée`.
 
 There currently is no way to access these Unicode character properties natively in ECMAScript regular expressions. This makes it painful for developers to support full Unicode in their regular expressions.
 
